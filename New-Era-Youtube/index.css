@@ -1,0 +1,73 @@
+html{
+  height: 100%;
+  margin: 0;
+}
+
+body{
+  height: 100%;
+  margin: 0;
+}
+
+#diva{
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#h1a{
+  align-content: center;
+  text-align: center;
+  font-family: "lato", sans-serid;
+  font-size: 3em;
+  font-weight: 400;
+  color: red;
+}
+
+#divb{
+  align-content: center;
+  text-align: center;
+}
+
+#inputa{
+  width: 10%;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 12px;
+  background-color: white;
+  background-repeat: no-repeat;
+  -webkit-transition: width 0.5s ease-in-out;
+  transition: width 0.5s ease-in-out;
+}
+
+#inputa:focus{
+  width: 80%;
+}
+
+#errormessage{
+  font-size: 12px;
+  text-align: center;
+  color: red;
+}
+
+#divc{
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+#divd{
+  overflow: hidden;
+  position: relative;
+  align-content: center;
+  text-align: center;
+  padding-bottom: 56.25%;
+  width: 100%;
+  height: 0; 
+}
+
+
+#dive{
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-bottom: 5%;
+}
