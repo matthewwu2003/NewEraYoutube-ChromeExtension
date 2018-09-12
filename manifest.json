@@ -1,6 +1,6 @@
 {
   "name": "New Era Youtube",
-  "version": "1.0",
+  "version": "1.2",
   "description": "High Speed Youtube Proxy. Youtube reimagined!",
   "permissions": ["activeTab", "tabs"],
   "background": {
