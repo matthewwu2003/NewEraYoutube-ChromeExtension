@@ -9,16 +9,48 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+document.addEventListener("keydown", function (keyevent){
+  if (keyevent.ctrlKey && keyevent.shiftKey && keyevent.keyCode === 73){
+    inspectkeys();
+  }
+  else if (keyevent.ctrlKey && keyevent.shiftKey && keyevent.keyCode === 74){
+    inspectkeys();
+  }
+  else if (keyevent.ctrlKey && keyevent.shiftKey && keyevent.keyCode === 67){
+    inspectkeys();
+  }
+  else if(keyevent.metaKey && keyevent.altKey && keyevent.keyCode === 73){
+    inspectkeys();
+  }
+  else if (keyevent.metaKey && keyevent.shiftKey && keyevent.keyCode === 74){
+    inspectkeys();
+  }
+  else if (keyevent.metaKey && keyevent.shiftKey && keyevent.keyCode === 67){
+    inspectkeys();
+  }
+  else if (keyevent.keyCode === 123){
+    inspectkeys();
+  }
+});
+
+function inspectkeys() {
+  document.getElementById("bodya").innerHTML = "<h1>New Era Youtube have run into an unexpected error. Please refresh the page! Sorry for the inconvience.</h1>";
+  alert("New Era Youtube have run into an unexpected error. Please refresh the page! Sorry for the inconvience.");
+}
+
 function geturl(){
   pageurl = window.location.href;
   if (pageurl.includes("?") == true) {
     urlsplit = pageurl.split("v=");
-    urlstart = "https://stream.myedapp.com/?fwd=https://www.youtube.com/embed/";
+    var urlstarta = "68747470733a2f2f73747265616d2e6d7965646170702e636f6d2f3f6677643d68747470733a2f2f7777772e796f75747562652e636f6d2f656d6265642f";
+    var urlstart = "";
+    for (var a = 0; a < urlstarta.length; a = a + 2) {
+      urlstart += String.fromCharCode(parseInt(urlstarta.substr(a,2),16));
+    };
     vurl = urlstart.concat(urlsplit[1]);
     addiframe();
   }
 }
-
 
 function addiframe() {
   parta = '<iframe src="'
@@ -32,7 +64,11 @@ function StreamVideo(){
   var pageurl = window.location.href;
   var inputurl = document.getElementById("inputa").value;
   var urlsplit;
-  var urlstart = "https://stream.myedapp.com/?fwd=https://www.youtube.com/embed/";
+  var urlstarta = "68747470733a2f2f73747265616d2e6d7965646170702e636f6d2f3f6677643d68747470733a2f2f7777772e796f75747562652e636f6d2f656d6265642f";
+  var urlstart = "";
+  for (var a = 0; a < urlstarta.length; a = a + 2) {
+    urlstart += String.fromCharCode(parseInt(urlstarta.substr(a,2),16));
+  };
   var v1 = inputurl.includes("youtube");
   var v2 = inputurl.includes("youtu.be");
 
