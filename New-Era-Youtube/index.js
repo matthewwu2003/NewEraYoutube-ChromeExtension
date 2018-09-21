@@ -11,31 +11,38 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener("keydown", function (keyevent){
   if (keyevent.ctrlKey && keyevent.shiftKey && keyevent.keyCode === 73){
-    inspectkeys();
+    inspectdetected();
   }
   else if (keyevent.ctrlKey && keyevent.shiftKey && keyevent.keyCode === 74){
-    inspectkeys();
+    inspectdetected();
   }
   else if (keyevent.ctrlKey && keyevent.shiftKey && keyevent.keyCode === 67){
-    inspectkeys();
+    inspectdetected();
   }
   else if(keyevent.metaKey && keyevent.altKey && keyevent.keyCode === 73){
-    inspectkeys();
+    inspectdetected();
   }
   else if (keyevent.metaKey && keyevent.shiftKey && keyevent.keyCode === 74){
-    inspectkeys();
+    inspectdetected();
   }
   else if (keyevent.metaKey && keyevent.shiftKey && keyevent.keyCode === 67){
-    inspectkeys();
+    inspectdetected();
   }
   else if (keyevent.keyCode === 123){
-    inspectkeys();
+    inspectdetected();
   }
 });
 
-function inspectkeys() {
+chrome.runtime.onMessage.addListener(
+  function(request){
+    if(request.msg === "devtooldetected"){
+      inspectdetected();
+    }
+  }
+);
+
+function inspectdetected() {
   document.getElementById("bodya").innerHTML = "<h1>New Era Youtube have run into an unexpected error. Please refresh the page! Sorry for the inconvience.</h1>";
-  alert("New Era Youtube have run into an unexpected error. Please refresh the page! Sorry for the inconvience.");
 }
 
 function geturl(){
