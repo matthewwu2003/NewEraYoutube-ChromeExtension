@@ -1,13 +1,19 @@
 var vurl;
 var taburl;
+var videoid = "";
 window.onload = geturl();
 
 document.addEventListener('DOMContentLoaded', function() {
   var buttona = document.getElementById("buttona");
+  var buttonb = document.getElementById("buttonb");
   buttona.addEventListener('click', function(){
     StreamVideo();
   });
+  buttonb.addEventListener('click', function(){
+    bypass1();
+  });
 });
+
 
 document.addEventListener("keydown", function (keyevent){
   if (keyevent.ctrlKey && keyevent.shiftKey && keyevent.keyCode === 73){
@@ -33,6 +39,10 @@ document.addEventListener("keydown", function (keyevent){
   }
 });
 
+document.addEventListener("contextmenu", function(rtclick){
+  rtclick.preventDefault();
+}, false);
+
 chrome.runtime.onMessage.addListener(
   function(request){
     if(request.msg === "devtooldetected"){
@@ -49,6 +59,7 @@ function geturl(){
   pageurl = window.location.href;
   if (pageurl.includes("?") == true) {
     urlsplit = pageurl.split("v=");
+    videoid = urlsplit[1];
     var urlstarta = "68747470733a2f2f73747265616d2e6d7965646170702e636f6d2f3f6677643d68747470733a2f2f7777772e796f75747562652e636f6d2f656d6265642f";
     var urlstart = "";
     for (var a = 0; a < urlstarta.length; a = a + 2) {
@@ -60,8 +71,8 @@ function geturl(){
 }
 
 function addiframe() {
-  parta = '<iframe src="'
-  partb = '" frameborder="0" allow="autoplay" allowfullscreen style="position:absolute;width:100%;height:100%;left:0;top:0;border:0;" border="0"></iframe>'
+  parta = '<iframe id="iframea" src="';
+  partb = '" frameborder="0" allow="autoplay" allowfullscreen style="position:absolute;width:100%;height:100%;left:0;top:0;border:0;" border="0"></iframe>';
   srcurl = parta.concat(vurl, partb);
   document.getElementById("divd").innerHTML = srcurl;
 }
@@ -81,11 +92,13 @@ function StreamVideo(){
 
   if (v1 === true) {
     urlsplit = inputurl.split("=");
+    videoid = urlsplit[1];
     vurl = urlstart.concat(urlsplit[1]);
     addiframe();
   }
   else if (v2 === true) {
     urlsplit = inputurl.split("/");
+    videoid = urlsplit[1];
     vurl = urlstart.concat(urlsplit[1]);
     addiframe();
   }
@@ -93,4 +106,19 @@ function StreamVideo(){
     var message = "Invalid URL! Please use www.youtube.com/watch?v=xxxxxxxxxxxxx or  http://youtu.be/xxxxxxxxxxxxx";
     document.getElementById("errormessage").innerHTML = message;
   }
+}
+
+function bypass1() {
+  urlstarta = "68747470733a2f2f73747265616d2e6d7965646170702e636f6d2f3f6677643d68747470733a2f2f7777772e796f75747562652e636f6d2f77617463683f763d";
+  var urlstart = "";
+  for (var a = 0; a < urlstarta.length; a = a + 2) {
+    urlstart += String.fromCharCode(parseInt(urlstarta.substr(a,2),16));
+  };
+  vurl = urlstart.concat(videoid);
+  parta = '<iframe id="iframeb" scroll="no" src="';
+  partb = '" frameborder="0" allow="autoplay" allowfullscreen border="0"></iframe>';
+  srcurl = parta.concat(vurl, partb);
+  document.getElementById("divd").innerHTML = srcurl;
+
+
 }
