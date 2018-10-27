@@ -51,6 +51,8 @@ chrome.runtime.onMessage.addListener(
   }
 );
 
+
+
 function inspectdetected() {
   document.getElementById("bodya").innerHTML = "<h1>New Era Youtube have run into an unexpected error. Please refresh the page! Sorry for the inconvience.</h1>";
 }
@@ -115,10 +117,21 @@ function bypass1() {
     urlstart += String.fromCharCode(parseInt(urlstarta.substr(a,2),16));
   };
   vurl = urlstart.concat(videoid);
-  parta = '<iframe id="iframeb" scroll="no" src="';
-  partb = '" frameborder="0" allow="autoplay" allowfullscreen border="0"></iframe>';
-  srcurl = parta.concat(vurl, partb);
-  document.getElementById("divd").innerHTML = srcurl;
+  if(videoid == ""){
+    alert("Oops. It look like you have pressed me too early. Only press me if it states: Video Unavailable");
+  }
+  else if(videoid != ""){
+    parta = '<iframe id="iframeb" scroll="no" src="';
+    partb = '&autoplay=0" frameborder="0" allow="autoplay" allowfullscreen style="position:absolute;width:100%;height:100%;left:0;top:0;border:0;" border="0"></iframe>';
+    srcurl = parta.concat(vurl, partb);
+    document.getElementById("divd").innerHTML = srcurl;
+    chrome.runtime.sendMessage({
+      msg: "checkagain",
+      data: {info: "1"}
+    });
+  }
+
+
 
 
 }

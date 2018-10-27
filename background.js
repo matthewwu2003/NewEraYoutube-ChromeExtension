@@ -3,6 +3,7 @@ var pageurla = pageurl.split("/");
 var extension = pageurla[2];
 var taburl;
 
+
 var blocked = [];
 blocked[0] = "chrome-extension://" + extension + "/New-Era-Youtube/index.js";
 blocked[1] = "chrome-extension://" + extension + "/New-Era-Youtube/index.css";
@@ -13,12 +14,38 @@ blocked[5] = "chrome-extension://" + extension + "/manifest.json";
 blocked[6] = "chrome-extension://" + extension + "/popup.html";
 blocked[7] = "chrome-extension://" + extension + "/popup.js";
 
+chrome.tabs.query({
+  active:true,
+  currentWindow:true
+}, function (tabs){
+  var currenttab = tabs[0];
+
+});
+
 chrome.tabs.onActivated.addListener(function(a){
   var tab = chrome.tabs.get(a.tabId, function(tab){
       taburl = tab.url;
       urlcheck();
 });
 });
+
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse){
+    var sendera = sender;
+    if(request.msg === "onyoutube"){
+      //sendResponse(sendera.tab.id);
+      chrome.tabs.get(sendera.tab.id, function(tab){
+        var sendertaburl = tab.url;
+
+      });
+      if(sendertaburl.includes(extension) == true){
+
+        sendResponse("clean");
+      }
+      //alert("a" + sendera.tab.id);
+    }
+  }
+);
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tabInfo){
   var tabid = tabId;

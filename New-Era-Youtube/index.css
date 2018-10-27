@@ -61,6 +61,10 @@ body{
   padding-right: 10%;
 }
 
+#buttonb{
+  float: right;
+}
+
 #divd{
   overflow: hidden;
   position: relative;
@@ -72,8 +76,6 @@ body{
 }
 
 #iframeb{
-  position: absolute;
-  margin-top: -50px;
 }
 
 
