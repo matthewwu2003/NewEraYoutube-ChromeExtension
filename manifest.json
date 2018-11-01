@@ -1,6 +1,6 @@
 {
   "name": "New Era Youtube",
-  "version": "1.6",
+  "version": "1.7",
   "description": "High Speed Youtube Proxy. Youtube reimagined!",
   "devtools_page": "devpage.html",
   "permissions": ["activeTab", "tabs"],
@@ -16,12 +16,20 @@
   "icons": {
     "128": "images/icon_128.png"
   },
-  "content_scripts": [{
+  "content_scripts": [
+    {
     "matches": ["<all_urls>"],
     "run_at": "document_end",
     "js": ["contentscript.js"],
     "all_frames": true
-    }],
+  },
+    {
+      "matches": ["<all_urls>"],
+      "run_at": "document_start",
+      "js": ["archivesavecheck.js"],
+      "all_frames": true
+    }
+  ],
   "web_accessible_resources": ["content.js", "New-Era-Youtube/jquery-2.1.0.min.js"],
   "manifest_version": 2
 }

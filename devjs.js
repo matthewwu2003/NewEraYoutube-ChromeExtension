@@ -28,7 +28,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tabInfo){
 
 function sendmessage() {
   chrome.runtime.sendMessage({
-    msg: "devtooldetected.",
+    msg: "devtooldetected",
     data: {info: "1"}
   });
 }

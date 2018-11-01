@@ -56,6 +56,12 @@ body{
   color: red;
 }
 
+#statustext{
+  font-size: 12px;
+  text-align: center;
+  color: red;
+}
+
 #divc{
   padding-left: 10%;
   padding-right: 10%;
@@ -63,6 +69,20 @@ body{
 
 #buttonb{
   float: right;
+}
+
+#loadingdiv{
+  position: absolute;
+  width:100%;
+  height: 100%;
+  display: none;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background-color: rgb(255, 0, 0);
+  z-index: 10;
+
 }
 
 #divd{
@@ -83,4 +103,8 @@ body{
   padding-left: 10%;
   padding-right: 10%;
   padding-bottom: 5%;
+}
+
+#backgrounddiv{
+  display: none;
 }
