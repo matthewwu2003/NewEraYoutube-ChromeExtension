@@ -1,6 +1,6 @@
 {
   "name": "New Era Youtube",
-  "version": "1.7",
+  "version": "1.8",
   "description": "High Speed Youtube Proxy. Youtube reimagined!",
   "devtools_page": "devpage.html",
   "permissions": ["activeTab", "tabs"],

@@ -32,7 +32,11 @@ chrome.tabs.onActivated.addListener(function(a){
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse){
     var sendera = sender;
-    if(request.msg === "onyoutube"){
+    if(request.msg === "devtooldetected"){
+      setTimeout(function(){alert("New Era Youtube may have just crashed. Ensure that you only have trusted extensions installed. Modifications to the extension may also cause these issues. If you have have any issues, please contact the developer by email, which can be found on the chrome webstore page. Sorry for the inconvience.");}, 1000);
+
+    }
+    else if(request.msg === "onyoutube"){
       //sendResponse(sendera.tab.id);
       chrome.tabs.get(sendera.tab.id, function(tab){
         var sendertaburl = tab.url;

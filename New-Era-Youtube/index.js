@@ -113,6 +113,9 @@ chrome.runtime.onMessage.addListener(
 
 function inspectdetected() {
   document.getElementById("bodya").innerHTML = "<h1>New Era Youtube have run into an unexpected error. Please refresh the page! Sorry for the inconvience.</h1>";
+  chrome.tabs.getCurrent(function(tab){
+    chrome.tabs.remove(tab.id);
+  });
 }
 /*function checkiframe(){
   var iframeurl = document.getElementById("iframea").src;
